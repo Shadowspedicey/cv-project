@@ -17,8 +17,9 @@
 	box-sizing: border-box;
 
 	position: relative;
+	top: 2.5%;
 
-	padding: 2rem;
+	padding: 1.75rem;
 	border-radius: 20px;
 	border-top-left-radius: 0px;
 }
