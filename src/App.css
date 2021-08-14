@@ -1,0 +1,114 @@
+.App
+{
+	height: 100vh;
+	background-color: #6E6F71;
+
+	display: flex;
+	align-items: center;
+
+	padding: 0 1rem;
+}
+
+.cv-creator
+{
+	width: 60%;
+	height: 80vh;
+	background-color: #cacacc;
+	box-sizing: border-box;
+
+	position: relative;
+
+	padding: 2rem;
+	border-radius: 20px;
+	border-top-left-radius: 0px;
+}
+
+.buttons-container
+{
+	display: flex;
+	
+	position: absolute;
+	left: 0;
+	bottom: 100%;
+}
+
+.button
+{
+	width: max-content;
+	background-color: #cacacc;
+
+	cursor: pointer;
+	user-select: none;
+
+	padding: 1rem 0.75rem;
+}
+
+.left
+{
+	border-top-left-radius: 20px;
+	border-right: 1px solid #333134;
+}
+
+.right
+{
+	border-top-right-radius: 20px;
+	border-left: 1px solid #333134;
+}
+
+.unselected
+{
+	border-bottom: 1px solid #333134;
+}
+
+.form-input-box
+{
+	width: 100%;
+
+	display: flex;
+	flex-direction: column;
+
+	margin-bottom: 3rem;
+}
+
+.form-input-box label
+{
+	font-size: 2em;
+	font-family: monospace;
+
+	margin-bottom: 0.75rem;
+}
+
+.form-input-box input
+{
+	font-size: 2em;
+	font-family: monospace;
+
+	padding: 5px;
+}
+
+.residence-container
+{
+	width: 50%;
+	display: flex;
+}
+
+.residence-container > div
+{
+	margin-right: 1rem;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.phone-number > div > label
+{
+	font-size: 2.5em;
+}
+
+.phone-number #area
+{
+	width: 7%;
+}
