@@ -4,6 +4,7 @@
 	background-color: #6E6F71;
 
 	display: flex;
+	justify-content: space-evenly;
 	align-items: center;
 
 	padding: 0 1rem;
@@ -11,8 +12,8 @@
 
 .cv-creator
 {
-	width: 60%;
-	height: 80vh;
+	width: 55%;
+	height: 80%;
 	background-color: #cacacc;
 	box-sizing: border-box;
 
@@ -46,18 +47,27 @@
 
 .left
 {
-	border-top-left-radius: 20px;
 	border-right: 1px solid #333134;
+}
+
+.left-corner
+{
+	border-top-left-radius: 20px;
 }
 
 .right
 {
-	border-top-right-radius: 20px;
 	border-left: 1px solid #333134;
+}
+
+.right-corner
+{
+	border-top-right-radius: 20px;
 }
 
 .unselected
 {
+	background-color: hsl(0, 0%, 82%);
 	border-bottom: 1px solid #333134;
 }
 
@@ -112,4 +122,213 @@ input[type=number]::-webkit-outer-spin-button {
 .phone-number #area
 {
 	width: 7%;
+}
+
+.skills
+{
+	display: flex;
+	flex-direction: column;
+}
+
+.skills > input
+{
+	width: 25%;
+
+	font-size: 2em;
+	font-family: monospace;
+
+	padding: 5px;
+	margin: 0.5rem 0;
+}
+
+.skill-add
+{
+	width: 25%;
+	cursor: pointer;
+
+	font-size: 4em;
+	font-weight: bold;
+	font-family: serif;
+	user-select: none;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+.skill-add:hover
+{
+	background-color: hsl(220, 1%, 74%);
+}
+
+.CV
+{
+	background: white;
+	width: 35%;
+	height: 90%;
+
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+
+	border-radius: 20px;
+}
+
+.cv-brief
+{
+	background-color: #E7E8EA;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.cv-photo
+{
+	width: 70%;
+	height: 20%;
+	overflow: hidden;
+
+	margin-top: 0.5rem;
+	border-radius: 50%;
+	border: 5px solid #333134;
+}
+
+.cv-photo img
+{
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+
+.cv-info-box
+{
+	width: 75%;
+}
+
+.cv-info-box .material-icons
+{
+	user-select: none;
+}
+
+.cv-info-box h2
+{
+	font-weight: 500;
+
+	border-bottom: 2px solid black;
+}
+
+.cv-contact ul
+{
+	padding: 0;
+}
+
+.cv-contact li
+{
+	color: #555;
+	list-style-type: none;
+
+	display: flex;
+	align-items: center;
+
+	padding: 0.35rem 0;
+	border-bottom: 1px solid #ccc;
+}
+
+.cv-contact li .material-icons
+{
+	margin-right: 0.25rem;
+}
+
+.cv-contact .cv-email
+{
+	font-size: 0.75em;
+}
+
+.cv-skills ul
+{
+	padding-left: 1.25rem;
+}
+
+.cv-skills li
+{
+	color: #555;
+	font-size: 1em;
+	font-weight: 600;
+	font-family: Arial;
+
+	margin-bottom: 0.5rem;
+}
+
+.refrence-info
+{
+	width: 100%;
+	height: 20%;
+	background-color: #333134;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.refrence-info > div
+{
+	width: 80%;
+}
+
+.refrence-info > div > h2
+{
+	color: #FFF;
+
+	border-bottom: 2px solid #FFF;
+}
+
+.refrence-info > div > h3, h4
+{
+	color: #FFF;
+	margin: 0.5rem 0;
+}
+
+.refrence-info h4
+{
+	font-weight: 300;
+}
+
+.cv-info
+{
+	display: grid;
+	grid-template-rows: 1fr 4fr;
+}
+
+.cv-header
+{
+	background-color: #333134;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.cv-header h1
+{
+	color: #FFF;
+	font-size: 2.5em;
+	font-family: monospace;
+
+	margin: 0;
+}
+
+.cv-header h2
+{
+	color: #FFF;
+	font-size: 1.25em;
+	font-family: monospace;
+	font-weight: 300;
+
+	margin: 0.5rem;
 }

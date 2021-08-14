@@ -1,6 +1,8 @@
 import React from 'react';
+import uniqid from "uniqid";
 
-import CvCreator from "./components/CvCreator";
+import CVCreator from "./components/CVCreator";
+import CV from "./components/CV";
 import './App.css';
 
 class App extends React.Component
@@ -27,12 +29,17 @@ class App extends React.Component
 					number: "",
 				}
 			},
+			job: "",
+			skills: [],
 		}
 
 		this.setPersonalInfo = this.setPersonalInfo.bind(this);
+		this.setJob = this.setJob.bind(this);
+		this.setSkills = this.setSkills.bind(this);
+		this.addSkill = this.addSkill.bind(this);
 	}
 
-	setPersonalInfo = (info, input, nested) =>
+	setPersonalInfo = (name, input, nested) =>
 	{
 		if (nested)
 		{
@@ -45,7 +52,7 @@ class App extends React.Component
 							[nested]:
 							{
 								...prevState.personalInfo[nested],
-								[info]: input,
+								[name]: input,
 							}
 						}
 					}
@@ -57,7 +64,7 @@ class App extends React.Component
 					personalInfo:
 					{
 						...prevState.personalInfo,
-						[info]: input,
+						[name]: input,
 					}
 				}
 			));
@@ -65,11 +72,47 @@ class App extends React.Component
 		setTimeout(() => console.log(this.state.personalInfo), 0);
 	}
 
+	setJob = input => this.setState({job: input});
+
+	setSkills = (key, input) =>
+	{
+		this.setState(prevState =>
+		(
+			{		
+				skills: prevState.skills.map(skill =>
+				{
+					if (skill.key === key) return skill = {...skill, "name": input}
+					else return skill;
+				})
+				
+			}
+		));
+	}
+
+	addSkill = () =>
+	{
+		this.setState(prevState =>
+		(
+			{
+				skills:
+				[
+					...prevState.skills,
+					{"name": "", "key": uniqid()}
+				]
+			}
+		))
+		setTimeout(() => console.log(this.state.skills), 0);
+	}
+
 	render()
 	{
 		return(
 			<div className="App">
-				<CvCreator setPersonalInfo={this.setPersonalInfo} personalInfo={this.state.personalInfo}/>
+				<CVCreator 
+				setPersonalInfo={this.setPersonalInfo} setJob={this.setJob} addSkill={this.addSkill} setSkills={this.setSkills}
+				personalInfo={this.state.personalInfo} job={this.state.job} skills={this.state.skills}
+				/>
+				<CV info={this.state}/>
 			</div>
 		);
 	}
