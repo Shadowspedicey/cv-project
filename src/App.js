@@ -43,6 +43,16 @@ class App extends React.Component
 					key: uniqid(),
 				}
 			],
+			work:
+			[
+				{
+					position: "",
+					yearFrom: "",
+					yearTo: "",
+					company: "",
+					key: uniqid(),
+				}
+			]
 		}
 
 		this.setPersonalInfo = this.setPersonalInfo.bind(this);
@@ -52,6 +62,8 @@ class App extends React.Component
 		this.setSkills = this.setSkills.bind(this);
 		this.addSkill = this.addSkill.bind(this);
 		this.removeWithKey = this.removeWithKey.bind(this);
+		this.addWork = this.addWork.bind(this);
+		this.setWork = this.setWork.bind(this);
 	}
 
 	setPersonalInfo = (name, input, nested) =>
@@ -165,6 +177,41 @@ class App extends React.Component
 		));
 	}
 
+	setWork = (key, name, input) =>
+	{
+		this.setState(prevState =>
+		(
+			{
+				work:
+				prevState.work.map(_work =>
+				{
+					if (_work.key === key) return {..._work, [name]: input}
+					else return _work;
+				})
+			}
+		));
+	}
+
+	addWork = () =>
+	{
+		this.setState(prevState =>
+			(
+				{
+					work:
+					[
+						...prevState.work,
+						{
+							position: "",
+							yearFrom: "",
+							yearTo: "",
+							company: "",
+							key: uniqid(),
+						}
+					]
+				}
+			))
+	}
+
 	personalFns =
 	{
 		setPersonalInfo: this.setPersonalInfo,
@@ -185,12 +232,19 @@ class App extends React.Component
 		removeSkill: this.removeWithKey,
 	}
 
+	workFns =
+	{
+		setWork: this.setWork,
+		addWork: this.addWork,
+		removeWork: this.removeWithKey,
+	}
+
 	render()
 	{
 		return(
 			<div className="App">
 				<CVCreator 
-				personalFns={this.personalFns} educationFns={this.educationFns} skillsFns={this.skillsFns}
+				personalFns={this.personalFns} educationFns={this.educationFns} skillsFns={this.skillsFns} workFns={this.workFns}
 				info={this.state}
 				/>
 				<CV info={this.state}/>

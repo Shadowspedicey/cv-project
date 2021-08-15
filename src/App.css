@@ -124,18 +124,18 @@ input[type=number]::-webkit-outer-spin-button {
 	width: 7%;
 }
 
-.education-container
+.education-container, .work-container
 {
 	display: flex;
 	flex-direction: column;
 }
 
-.education
+.education, .work
 {
 	position: relative;
 }
 
-.education > .material-icons
+.education > .material-icons, .work > .material-icons
 {
 	cursor: pointer;
 	font-size: 1.75em;
@@ -146,12 +146,12 @@ input[type=number]::-webkit-outer-spin-button {
 	right: 100%;
 }
 
-.education > .form-input-box
+.education > .form-input-box, .work > .form-input-box
 {
 	margin-bottom: 2rem;
 }
 
-.education > .form-input-box > div
+.education > .form-input-box > div, .work > .form-input-box > div
 {
 	display: flex;
 	flex-direction: column;
