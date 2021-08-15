@@ -33,7 +33,7 @@ class Skills extends React.Component
 							</div>
 					)}
 				</div>
-				<div className="skill-add" onClick={this.props.addSkill}>+</div>
+				{this.props.skills.length < 7 ? <div className="skill-add" onClick={this.props.addSkill}>+</div> : null}
 			</div>
 		)
 	}
