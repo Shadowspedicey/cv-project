@@ -16,6 +16,7 @@ class App extends React.Component
 			personalInfo:
 			{
 				name: "",
+				photo: "https://lh3.googleusercontent.com/proxy/Tu36WTFE1ewkSeZ24YZF4InmdqrT4TqUt6xByw5_DhjS2TF7LhEGyNJcLSM73saTSYwF1CMlE9Ix_m52y5qlKcQC9Y9t4p8AZE98Dj0SHV0SXFb0_AF_dvjP0vUlTg",
 				email: "",
 				residence:
 				{
@@ -81,6 +82,19 @@ class App extends React.Component
 								...prevState.personalInfo[nested],
 								[name]: input,
 							}
+						}
+					}
+				));
+		}
+		else if (name === "photo")
+		{
+			this.setState(prevState =>
+				(
+					{
+						personalInfo:
+						{
+							...prevState.personalInfo,
+							photo: URL.createObjectURL(input),
 						}
 					}
 				));

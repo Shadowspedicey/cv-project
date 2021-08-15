@@ -7,7 +7,7 @@ class CVBrief extends React.Component
 		return(
 			<div className="cv-brief">
 					<div className="cv-photo">
-						<img src="https://www.cvtemplatemaster.com/securecontent/uploads/2018/12/personal-attributes-cv.jpg" alt=""></img>
+						<img src={this.props.personalInfo.photo} alt=""></img>
 					</div>
 
 					<div className="cv-info-box cv-contact">

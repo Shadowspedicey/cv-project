@@ -16,9 +16,17 @@ class Personal extends React.Component
 		return(
 			<div>
 				<form>
+					<div className="form-input-box" style={{flexDirection: "row", marginBottom: "0.5rem"}}>
+						<div style={{width: "70%", display: "flex", flexDirection: "column"}}>
+							<label htmlFor="name">Full Name</label>
+							<input type="text" id="name" value={this.props.personalInfo.name} placeholder="Full Name" onChange={(e) => this.handleChange("name", e)}></input>
+						</div>
+					</div>
 					<div className="form-input-box">
-						<label htmlFor="name">Full Name</label>
-						<input type="text" id="name" value={this.props.personalInfo.name} placeholder="Full Name" onChange={(e) => this.handleChange("name", e)}></input>
+						<div>
+							<label htmlFor="photo">Your Photo:</label>
+							<input type="file" id="photo" accept="image/*" onChange={(e) => this.props.setPersonalInfo("photo", e.target.files[0])}></input>
+						</div>
 					</div>
 					<div className="form-input-box">
 						<label htmlFor="email">Email Address</label>
