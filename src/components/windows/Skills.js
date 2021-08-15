@@ -24,7 +24,14 @@ class Skills extends React.Component
 				</div>
 				<h1>Skills</h1>
 				<div className="skills">
-				{this.props.skills.map(skill => <input key={skill.key} value={skill.name} onChange={(e) => this.handleChange(skill.key ,e)}></input>)}
+					{this.props.skills.map
+					(
+						skill =>
+							<div key={skill.key} style={{display: "flex", alignItems: "center"}}>
+								<input value={skill.name} onChange={(e) => this.handleChange(skill.key ,e)}></input>
+								<span className="material-icons" onClick={() => this.props.removeSkill(skill.key)}>delete</span>
+							</div>
+					)}
 				</div>
 				<div className="skill-add" onClick={this.props.addSkill}>+</div>
 			</div>

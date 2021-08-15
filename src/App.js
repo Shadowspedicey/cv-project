@@ -37,6 +37,7 @@ class App extends React.Component
 		this.setJob = this.setJob.bind(this);
 		this.setSkills = this.setSkills.bind(this);
 		this.addSkill = this.addSkill.bind(this);
+		this.removeSkill = this.removeSkill.bind(this);
 	}
 
 	setPersonalInfo = (name, input, nested) =>
@@ -104,13 +105,23 @@ class App extends React.Component
 		setTimeout(() => console.log(this.state.skills), 0);
 	}
 
+	removeSkill = key =>
+	{
+		this.setState(prevState =>
+		(
+			{
+				skills: prevState.skills.filter(skill => skill.key !== key)
+			}
+		));
+	}
+
 	render()
 	{
 		return(
 			<div className="App">
 				<CVCreator 
-				setPersonalInfo={this.setPersonalInfo} setJob={this.setJob} addSkill={this.addSkill} setSkills={this.setSkills}
-				personalInfo={this.state.personalInfo} job={this.state.job} skills={this.state.skills}
+				setPersonalInfo={this.setPersonalInfo} setJob={this.setJob} addSkill={this.addSkill} removeSkill={this.removeSkill} setSkills={this.setSkills}
+				info={this.state}
 				/>
 				<CV info={this.state}/>
 			</div>

@@ -130,7 +130,7 @@ input[type=number]::-webkit-outer-spin-button {
 	flex-direction: column;
 }
 
-.skills > input
+.skills input
 {
 	width: 25%;
 
@@ -139,6 +139,12 @@ input[type=number]::-webkit-outer-spin-button {
 
 	padding: 5px;
 	margin: 0.5rem 0;
+}
+
+.skills .material-icons
+{
+	cursor: pointer;
+	font-size: 1.75em;
 }
 
 .skill-add
