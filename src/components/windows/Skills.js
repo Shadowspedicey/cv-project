@@ -10,10 +10,7 @@ class Skills extends React.Component
 		this.handleChange = this.handleChange.bind(this);
 	}
 
-	handleChange = (key, e) =>
-	{
-		this.props.setSkills(key, e.target.value)
-	}
+	handleChange = (key, e) => this.props.skillsFns.setSkills(key, e.target.value);
 
 	render()
 	{
@@ -21,7 +18,7 @@ class Skills extends React.Component
 			<div>
 				<div className="form-input-box">
 					<label htmlFor="job">Position/Job</label>
-					<input type="text" id="job" value={this.props.job} placeholder="Web Developer" onChange={(e) => this.props.setJob(e.target.value)}></input>
+					<input type="text" id="job" value={this.props.job} placeholder="Web Developer" onChange={(e) => this.props.skillsFns.setJob(e.target.value)}></input>
 				</div>
 				<h1>Skills</h1>
 				<div className="skills">
@@ -30,10 +27,10 @@ class Skills extends React.Component
 						skill =>
 							<div key={skill.key} style={{display: "flex", alignItems: "center"}}>
 								<input value={skill.name} onChange={(e) => this.handleChange(skill.key ,e)}></input>
-								<span className="material-icons" onClick={() => this.props.removeSkill(skill.key)}>delete</span>
+								<span className="material-icons" onClick={() => this.props.skillsFns.removeSkill(skill.key)}>delete</span>
 							</div>
 					)}
-					<AddButton property={this.props.skills} length={7} action={this.props.addSkill}/>
+					<AddButton property={this.props.skills} length={7} action={this.props.skillsFns.addSkill}/>
 				</div>
 			</div>
 		)

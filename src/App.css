@@ -124,6 +124,23 @@ input[type=number]::-webkit-outer-spin-button {
 	width: 7%;
 }
 
+.education-container
+{
+	display: flex;
+	flex-direction: column;
+}
+
+.education > .form-input-box
+{
+	margin-bottom: 2rem;
+}
+
+.education > .form-input-box > div
+{
+	display: flex;
+	flex-direction: column;
+}
+
 .skills
 {
 	width: 30%;

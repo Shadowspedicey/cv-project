@@ -69,11 +69,11 @@ class CVCreator extends React.Component
 				</div>
 				{
 					this.state.window.personal 
-					? <Personal setPersonalInfo={this.props.setPersonalInfo} personalInfo={this.props.info.personalInfo}/> 
+					? <Personal setPersonalInfo={this.props.personalFns.setPersonalInfo} personalInfo={this.props.info.personalInfo}/> 
 					: this.state.window.education
-					? <Education/>
+					? <Education educationFns={this.props.educationFns} education={this.props.info.education}/>
 					: this.state.window.skills
-					? <Skills setJob={this.props.setJob} addSkill={this.props.addSkill} removeSkill={this.props.removeSkill} setSkills={this.props.setSkills} job={this.props.info.job} skills={this.props.info.skills}/>
+					? <Skills skillsFns={this.props.skillsFns} job={this.props.info.job} skills={this.props.info.skills}/>
 					: this.state.window.work
 					? <Work/>
 					: null
