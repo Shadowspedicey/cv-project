@@ -51,7 +51,7 @@ class App extends React.Component
 		this.setJob = this.setJob.bind(this);
 		this.setSkills = this.setSkills.bind(this);
 		this.addSkill = this.addSkill.bind(this);
-		this.removeSkill = this.removeSkill.bind(this);
+		this.removeWithKey = this.removeWithKey.bind(this);
 	}
 
 	setPersonalInfo = (name, input, nested) =>
@@ -155,12 +155,12 @@ class App extends React.Component
 		setTimeout(() => console.log(this.state.skills), 0);
 	}
 
-	removeSkill = key =>
+	removeWithKey = (array, key) =>
 	{
 		this.setState(prevState =>
 		(
 			{
-				skills: prevState.skills.filter(skill => skill.key !== key)
+				[array]: prevState[array].filter(element => element.key !== key)
 			}
 		));
 	}
@@ -174,6 +174,7 @@ class App extends React.Component
 	{
 		setEducation: this.setEducation,
 		addEducation: this.addEducation,
+		removeEducation: this.removeWithKey,
 	}
 
 	skillsFns =
@@ -181,7 +182,7 @@ class App extends React.Component
 		setJob: this.setJob,
 		setSkills: this.setSkills,
 		addSkill: this.addSkill,
-		removeSkill: this.removeSkill,
+		removeSkill: this.removeWithKey,
 	}
 
 	render()

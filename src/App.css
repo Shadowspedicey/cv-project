@@ -130,6 +130,22 @@ input[type=number]::-webkit-outer-spin-button {
 	flex-direction: column;
 }
 
+.education
+{
+	position: relative;
+}
+
+.education > .material-icons
+{
+	cursor: pointer;
+	font-size: 1.75em;
+
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 100%;
+}
+
 .education > .form-input-box
 {
 	margin-bottom: 2rem;

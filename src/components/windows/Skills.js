@@ -27,7 +27,7 @@ class Skills extends React.Component
 						skill =>
 							<div key={skill.key} style={{display: "flex", alignItems: "center"}}>
 								<input value={skill.name} onChange={(e) => this.handleChange(skill.key ,e)}></input>
-								<span className="material-icons" onClick={() => this.props.skillsFns.removeSkill(skill.key)}>delete</span>
+								<span className="material-icons" onClick={() => this.props.skillsFns.removeSkill("skills", skill.key)}>delete</span>
 							</div>
 					)}
 					<AddButton property={this.props.skills} length={7} action={this.props.skillsFns.addSkill}/>

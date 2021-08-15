@@ -11,6 +11,7 @@ class Education extends React.Component
 					this.props.education.map
 					(edu =>
 						<div className="education" key={edu.key}>
+							<span className="material-icons" onClick={() => this.props.educationFns.removeEducation("education", edu.key)}>delete</span>
 							<div className="form-input-box" style={{flexDirection: "row", marginBottom: "1rem"}}>
 								<div style={{width: "80%", marginRight: "1rem"}}>
 									<label htmlFor="degree">Degree</label>
