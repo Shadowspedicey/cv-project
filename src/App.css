@@ -377,6 +377,7 @@ input[type=number]::-webkit-outer-spin-button {
 {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-around;
 	align-items: center;
 }
 
@@ -401,7 +402,12 @@ input[type=number]::-webkit-outer-spin-button {
 	border-bottom: 2px solid black;
 }
 
-.cv-education
+.cv-work
+{
+	margin-bottom: 2rem !important;
+}
+
+.cv-education, .cv-work
 {
 	width: 100%;
 
@@ -412,7 +418,7 @@ input[type=number]::-webkit-outer-spin-button {
 	margin-bottom: 0.5rem;
 }
 
-.cv-education > h4
+.cv-education > h4, .cv-work > h4
 {
 	color: black;
 	font-size: 1.125em;
@@ -420,7 +426,7 @@ input[type=number]::-webkit-outer-spin-button {
 	font-weight: 400;
 }
 
-.cv-education > h2
+.cv-education > h2, .cv-work > h2
 {
 	color: hsl(0, 0, 10%);
 	font-weight: 500;
@@ -428,7 +434,7 @@ input[type=number]::-webkit-outer-spin-button {
 	margin: 0;
 }
 
-.cv-education > h3
+.cv-education > h3, .cv-work > h3
 {
 	color: hsl(0, 0, 10%);
 	font-weight: 400;

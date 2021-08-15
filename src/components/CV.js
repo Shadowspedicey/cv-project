@@ -28,6 +28,19 @@ class CV extends React.Component
 								)
 							}
 						</div>
+						<div className="cv-description-box">
+							<h1>Work Experience</h1>
+							{
+								this.props.info.work.map
+								(_work =>
+									<div className="cv-work" key={_work.key}>
+										<h2>{_work.position}</h2>
+										<h4>{_work.yearFrom}-{_work.yearTo}</h4>
+										<h3>{_work.company}</h3>
+									</div>
+								)
+							}
+						</div>
 					</div>
 				</div>
 			</div>
