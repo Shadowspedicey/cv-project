@@ -216,6 +216,20 @@ input[type=number]::-webkit-outer-spin-button {
 	border-radius: 20px;
 }
 
+.export-window > h1
+{
+	font-family: monospace;
+	font-weight: 400;
+}
+
+.export-window > button
+{
+	font-family: monospace;
+	font-size: 3em;
+
+	padding: 1rem;
+}
+
 .cv-brief
 {
 	background-color: #E7E8EA;

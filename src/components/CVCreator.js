@@ -3,6 +3,7 @@ import Personal from "./windows/Personal";
 import Education from "./windows/Education";
 import Skills from "./windows/Skills";
 import Work from "./windows/Work";
+import Export from "./windows/Export";
 
 class CVCreator extends React.Component
 {
@@ -18,6 +19,7 @@ class CVCreator extends React.Component
 				education: false,
 				skills: false,
 				work: false,
+				export: false,
 			}
 		}
 
@@ -33,6 +35,7 @@ class CVCreator extends React.Component
 				education: false,
 				skills: false,
 				work: false,
+				export: false,
 				[window]: true,
 			}
 		}
@@ -62,9 +65,15 @@ class CVCreator extends React.Component
 					</div>
 
 					<div
-					className={`button right right-corner ${this.state.window.work ? null : "unselected"}`}
+					className={`button right ${this.state.window.work ? null : "unselected"}`}
 					onClick={() => this.changeWindow("work")}>
 						Work Experience
+					</div>
+
+					<div
+					className={`button right right-corner ${this.state.window.export ? null : "unselected"}`}
+					onClick={() => this.changeWindow("export")}>
+						Export
 					</div>
 				</div>
 				{
@@ -76,6 +85,8 @@ class CVCreator extends React.Component
 					? <Skills skillsFns={this.props.skillsFns} job={this.props.info.job} skills={this.props.info.skills}/>
 					: this.state.window.work
 					? <Work workFns={this.props.workFns} works={this.props.info.work}/>
+					: this.state.window.export
+					? <Export/>
 					: null
 				}
 			</div>
