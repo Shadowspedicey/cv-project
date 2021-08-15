@@ -1,4 +1,5 @@
 import React from "react";
+import AddButton from "../AddButton";
 
 class Skills extends React.Component
 {
@@ -32,8 +33,8 @@ class Skills extends React.Component
 								<span className="material-icons" onClick={() => this.props.removeSkill(skill.key)}>delete</span>
 							</div>
 					)}
+					<AddButton property={this.props.skills} length={7} action={this.props.addSkill}/>
 				</div>
-				{this.props.skills.length < 7 ? <div className="skill-add" onClick={this.props.addSkill}>+</div> : null}
 			</div>
 		)
 	}
