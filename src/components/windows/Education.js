@@ -3,6 +3,20 @@ import AddButton from "../AddButton";
 
 class Education extends React.Component
 {
+
+	constructor()
+	{
+		super();
+
+		this.preventInput = this.preventInput.bind(this);
+	}
+
+	preventInput = (e, maxLength) =>
+	{
+		if (e.target.value.length === maxLength && String.fromCharCode(e.which).match(/^\d$/))
+			return e.preventDefault();
+	}
+
 	render()
 	{
 		return(
@@ -25,7 +39,7 @@ class Education extends React.Component
 							<div className="form-input-box" style={{flexDirection: "row"}}>
 								<div style={{width: "10%", marginRight: "1rem"}}>
 									<label htmlFor="year">Year</label>
-									<input type="text" id="year" value={edu.year} placeholder="2005" onChange={(e) => this.props.educationFns.setEducation(edu.key, "year", e.target.value)}></input>
+									<input type="number" id="year" value={edu.year} placeholder="2005" onChange={(e) => this.props.educationFns.setEducation(edu.key, "year", e.target.value)} onKeyDown={(e) => this.preventInput(e, 4)}></input>
 								</div>
 								<div style={{width: "100%"}}>
 									<label htmlFor="school">School</label>
