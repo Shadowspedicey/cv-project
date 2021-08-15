@@ -372,3 +372,66 @@ input[type=number]::-webkit-outer-spin-button {
 
 	margin: 0.5rem;
 }
+
+.cv-body
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.cv-description-box
+{
+	width: 90%;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.cv-description-box h1
+{
+	width: 100%;
+
+	text-align: center;
+	font-family: monospace;
+
+	padding: 0.25rem 0;
+	margin: 0 0 0.5rem 0;
+	border-bottom: 2px solid black;
+}
+
+.cv-education
+{
+	width: 100%;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	margin-bottom: 0.5rem;
+}
+
+.cv-education > h4
+{
+	color: black;
+	font-size: 1.125em;
+	font-family: monospace;
+	font-weight: 400;
+}
+
+.cv-education > h2
+{
+	color: hsl(0, 0, 10%);
+	font-weight: 500;
+
+	margin: 0;
+}
+
+.cv-education > h3
+{
+	color: hsl(0, 0, 10%);
+	font-weight: 400;
+
+	margin: 0;
+}
