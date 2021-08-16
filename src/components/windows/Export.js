@@ -13,8 +13,9 @@ class Export extends React.Component
 
 	toPDF = () =>
 	{
-		document.querySelector(".CV").classList.add("grid");
-		setTimeout(() =>	document.querySelector(".CV").classList.remove("grid"), 0);
+		window.scrollTo(0,0)
+		document.querySelector(".CV").classList.add("print-ready");
+		setTimeout(() =>	document.querySelector(".CV").classList.remove("print-ready"), 0);
 		html2canvas(document.querySelector(".CV"), {scale: 2})
 			.then(canvas =>
 			{
@@ -24,7 +25,7 @@ class Export extends React.Component
 				const pdfWidth = doc.internal.pageSize.getWidth();
 				const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 				doc.addImage(img, 'PNG', 0, 0, pdfWidth, pdfHeight);
-				doc.save('test.pdf');
+				doc.save('CV.pdf');
 			}
 		);
 	}
