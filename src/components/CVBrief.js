@@ -15,7 +15,7 @@ class CVBrief extends React.Component
 						<ul>
 							<li>
 								<span className="material-icons">phone</span>
-								<span>+({this.props.personalInfo.phoneNumber.area}){this.props.personalInfo.phoneNumber.number}</span>
+								<span style={{whiteSpace: "nowrap"}}>+({this.props.personalInfo.phoneNumber.area}){this.props.personalInfo.phoneNumber.number}</span>
 							</li>
 							<li>
 								<span className="material-icons">email</span>
