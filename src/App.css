@@ -2,6 +2,7 @@
 {
 	height: 100vh;
 	background-color: #6E6F71;
+	overflow: hidden;
 
 	display: flex;
 	justify-content: space-evenly;
@@ -85,6 +86,7 @@
 {
 	font-size: 2em;
 	font-family: monospace;
+	white-space: nowrap;
 
 	margin-bottom: 0.75rem;
 }
@@ -122,6 +124,11 @@ input[type=number]::-webkit-outer-spin-button {
 .phone-number #area
 {
 	width: 7%;
+}
+
+.phone-number #number
+{
+	width: 35%;
 }
 
 .education-container, .work-container
@@ -454,4 +461,20 @@ input[type=number]::-webkit-outer-spin-button {
 	font-weight: 400;
 
 	margin: 0;
+}
+
+@media (max-device-width: 1225px)
+{
+	.cv-creator
+	{
+		width: 90%;
+	}
+}
+
+@media (max-device-width: 600px)
+{
+	.cv-creator
+	{
+		height: 75%;
+	}
 }

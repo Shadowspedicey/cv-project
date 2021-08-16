@@ -48,7 +48,7 @@ class Personal extends React.Component
 							</div>
 						</div>
 					</div>
-					<div>
+					<div style={{display: "flex"}}>
 						<div className="form-input-box phone-number">
 							<label htmlFor="number">Phone Number</label>
 							<div>
