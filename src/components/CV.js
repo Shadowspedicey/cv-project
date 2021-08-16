@@ -6,7 +6,8 @@ class CV extends React.Component
 	render()
 	{
 		return(
-			<div className="CV">
+			<div className="CV"
+			style={this.props.info.switchMenu.on ? this.props.info.switchMenu.menus.cv ? {display: "grid"} : {display: "none"} : null}>
 				<CVBrief personalInfo={this.props.info.personalInfo} skills={this.props.info.skills}/>
 				<div className="cv-info">
 					<div className="cv-header">

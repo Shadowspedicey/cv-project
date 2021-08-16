@@ -30,7 +30,7 @@ class Work extends React.Component
 										<input type="text" id="position" value={work.position} placeholder="Web Developer" onChange={(e) => this.props.workFns.setWork(work.key, "position", e.target.value)}></input>
 								</div>
 								<div className="form-input-box" style={{flexDirection: "row"}}>
-									<div style={{width: "10%", marginRight: "1rem"}}>
+									<div style={{width: "12.5%", marginRight: "1rem"}}>
 										<label htmlFor="yearFrom">From</label>
 										<input type="number" id="yearFrom" value={work.yearFrom} placeholder="2005" onChange={(e) => this.props.workFns.setWork(work.key, "yearFrom", e.target.value)} onKeyDown={(e) => this.preventInput(e, 4)}></input>
 									</div>
@@ -38,7 +38,7 @@ class Work extends React.Component
 										<label htmlFor="yearTo">To</label>
 										<input type="text" id="yearTo" value={work.yearTo} placeholder="2010" onChange={(e) => this.props.workFns.setWork(work.key, "yearTo", e.target.value)} onKeyDown={(e) => this.preventInput(e, 7)}></input>
 									</div>
-									<div style={{width: "100%"}}>
+									<div style={{width: "75%"}}>
 										<label htmlFor="company">Company</label>
 										<input type="text" id="company" value={work.company} placeholder="MICON" onChange={(e) => this.props.workFns.setWork(work.key, "company", e.target.value)}></input>
 									</div>

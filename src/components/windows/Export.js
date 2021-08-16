@@ -11,7 +11,10 @@ class Export extends React.Component
 		this.toPDF = this.toPDF.bind(this);
 	}
 
-	toPDF = () => 
+	toPDF = () =>
+	{
+		document.querySelector(".CV").classList.add("grid");
+		setTimeout(() =>	document.querySelector(".CV").classList.remove("grid"), 0);
 		html2canvas(document.querySelector(".CV"), {scale: 2})
 			.then(canvas =>
 			{
@@ -24,6 +27,7 @@ class Export extends React.Component
 				doc.save('test.pdf');
 			}
 		);
+	}
 
 	render()
 	{

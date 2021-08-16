@@ -3,6 +3,7 @@ import uniqid from "uniqid";
 
 import CVCreator from "./components/CVCreator";
 import CV from "./components/CV";
+import SwitchMenu from "./components/SwitchMenu"
 import './App.css';
 
 class App extends React.Component
@@ -13,6 +14,15 @@ class App extends React.Component
 		
 		this.state =
 		{
+			switchMenu:
+			{
+				on: false,
+				menus:
+				{
+					cvCreator: true,
+					cv: false,
+				}
+			},
 			personalInfo:
 			{
 				name: "",
@@ -56,6 +66,9 @@ class App extends React.Component
 			]
 		}
 
+		this.switchMenuOn = this.switchMenuOn.bind(this);
+		this.changeMenus = this.changeMenus.bind(this);
+
 		this.setPersonalInfo = this.setPersonalInfo.bind(this);
 		this.setEducation = this.setEducation.bind(this);
 		this.addEducation = this.addEducation.bind(this);
@@ -65,6 +78,27 @@ class App extends React.Component
 		this.removeWithKey = this.removeWithKey.bind(this);
 		this.addWork = this.addWork.bind(this);
 		this.setWork = this.setWork.bind(this);
+	}
+
+	switchMenuOn = () => this.setState(prevState => ({switchMenu: {...prevState.switchMenu, on: true}}));
+
+	changeMenus = menu =>
+	{
+		this.setState
+		(
+			{
+				switchMenu:
+				{
+					...this.state.switchMenu,
+					menus:
+					{
+						cvCreator: false,
+						cv: false,
+						[menu]: true,
+					}
+				}
+			}
+		)
 	}
 
 	setPersonalInfo = (name, input, nested) =>
@@ -257,6 +291,7 @@ class App extends React.Component
 	{
 		return(
 			<div className="App">
+				{window.innerWidth <= 1225 ? <SwitchMenu on={this.switchMenuOn} changeMenus={this.changeMenus} menus={this.state.switchMenu.menus}/> : null}
 				<CVCreator 
 				personalFns={this.personalFns} educationFns={this.educationFns} skillsFns={this.skillsFns} workFns={this.workFns}
 				info={this.state}

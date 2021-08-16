@@ -12,6 +12,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.grid
+{
+	display: grid !important;
+}
+
 @media (max-height: 750px)
 {
 	html

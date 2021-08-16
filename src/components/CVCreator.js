@@ -44,7 +44,8 @@ class CVCreator extends React.Component
 	render()
 	{
 		return(
-			<div className="cv-creator">
+			<div className="cv-creator"
+			style={this.props.info.switchMenu.on ? this.props.info.switchMenu.menus.cvCreator ? null : {display: "none"} : null}>
 				<div className="buttons-container">
 					<div
 					className={`button left left-corner ${this.state.window.personal ? null : "unselected"}`}

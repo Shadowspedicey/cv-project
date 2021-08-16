@@ -11,6 +11,20 @@
 	padding: 0 1rem;
 }
 
+.switch-menu
+{
+	display: flex;
+
+	position: absolute;
+	top: 0;
+}
+
+.no-border
+{
+	border-bottom: 0 !important;
+}
+
+
 .cv-creator
 {
 	width: 55%;
@@ -216,6 +230,7 @@ input[type=number]::-webkit-outer-spin-button {
 	background: white;
 	width: 35%;
 	height: 90%;
+	overflow: hidden;
 
 	display: grid;
 	grid-template-columns: 1fr 2fr;
@@ -468,6 +483,12 @@ input[type=number]::-webkit-outer-spin-button {
 	.cv-creator
 	{
 		width: 90%;
+	}
+
+	.CV
+	{
+		width: 666px;
+		display: none;
 	}
 }
 
