@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import uniqid from "uniqid";
 
 import CVCreator from "./components/CVCreator";
@@ -6,46 +6,139 @@ import CV from "./components/CV";
 import SwitchMenu from "./components/SwitchMenu"
 import './App.css';
 
-class App extends React.Component
+const App = () =>
 {
-	constructor()
-	{
-		super();
-		
-		this.state =
+	const [switchMenu, setSwitchMenu] = useState({on: false, menus: {cvCreator: true, cv: false}});
+	const [personalInfo, setPersonalinfo] = useState
+	(
 		{
-			switchMenu:
+			name: "",
+			photo: "https://lh3.googleusercontent.com/proxy/Tu36WTFE1ewkSeZ24YZF4InmdqrT4TqUt6xByw5_DhjS2TF7LhEGyNJcLSM73saTSYwF1CMlE9Ix_m52y5qlKcQC9Y9t4p8AZE98Dj0SHV0SXFb0_AF_dvjP0vUlTg",
+			email: "",
+			residence:
 			{
-				on: false,
+				address: "",
+				city: "",
+				country: "",
+			},
+			phoneNumber:
+			{
+				area: "",
+				number: "",
+			}
+		}
+	);
+	const [job, setJob] = useState("");
+	const [skills, setSkills] = useState([]);
+	const [education, setEducation] = useState
+	(
+		[
+			{
+				degree: "",
+				titleOfStudy: "",
+				year: "",
+				school: "",
+				key: uniqid(),
+			}
+		]
+	);
+	const [work, setWork] = useState
+	(
+		[
+			{
+				position: "",
+				yearFrom: "",
+				yearTo: "",
+				company: "",
+				key: uniqid(),
+			}
+		]
+	);
+
+	const state =
+	{
+		switchMenu,
+		personalInfo,
+		job,
+		skills,
+		education,
+		work,
+	}
+
+	const switchMenuOn = () => setSwitchMenu({...switchMenu, on: true});
+
+	const changeMenus = menu =>
+	{
+		setSwitchMenu
+		(
+			{
+				...switchMenu,
 				menus:
 				{
-					cvCreator: true,
+					cvCreator: false,
 					cv: false,
+					[menu]: true,
 				}
-			},
-			personalInfo:
+			}
+		)
+	};
+
+	const setPersonalInfo = (name, input, nested) =>
+	{
+		if (nested)
+		{
+			setPersonalinfo
+			(
+				{
+					...personalInfo,
+					[nested]:
+					{
+						...personalInfo[nested],
+						[name]: input,
+					}
+				}
+			);
+		}
+		else if (name === "photo")
+		{
+			setPersonalinfo
+			(
+				{
+					...personalInfo,
+					photo: URL.createObjectURL(input),
+				}
+			);
+		}
+		else setPersonalinfo
+		(
 			{
-				name: "",
-				photo: "https://lh3.googleusercontent.com/proxy/Tu36WTFE1ewkSeZ24YZF4InmdqrT4TqUt6xByw5_DhjS2TF7LhEGyNJcLSM73saTSYwF1CMlE9Ix_m52y5qlKcQC9Y9t4p8AZE98Dj0SHV0SXFb0_AF_dvjP0vUlTg",
-				email: "",
-				residence:
-				{
-					address: "",
-					city: "",
-					country: "",
-				},
-				phoneNumber:
-				{
-					area: "",
-					number: "",
-				}
-			},
+				...personalInfo,
+				[name]: input,
+			}
+		);
 
-			job: "",
-			skills: [],
+		setTimeout(() => console.log(this.state.personalInfo), 0);
+	};
 
-			education:
+	const changeEducation = (key, name, input) =>
+	{
+		setEducation
+		(
+			education.map(edu =>
+			{
+				if (edu.key === key) return {...edu, [name]: input}
+				else return edu;
+			})
+		);
+		setTimeout(() => console.log(this.state.education), 0);
+	};
+
+	const addEducation = () =>
+	{
+		setEducation
+		(
 			[
+				...education,
 				{
 					degree: "",
 					titleOfStudy: "",
@@ -53,9 +146,70 @@ class App extends React.Component
 					school: "",
 					key: uniqid(),
 				}
-			],
-			work:
+			]
+		);
+	};
+
+	const changeJob = input => setJob(input);
+
+	const changeSkills = (key, input) =>
+	{
+		setSkills
+		(
+			skills.map(skill =>
+			{
+				if (skill.key === key) return skill = {...skill, "name": input}
+				else return skill;
+			})
+		);
+	}
+
+	const addSkill = () =>
+	{
+		setSkills
+		(
 			[
+				...skills,
+				{"name": "", "key": uniqid()}
+			]
+		);
+		setTimeout(() => console.log(this.state.skills), 0);
+	};
+
+	const removeWithKey = (array, key) =>
+	{
+		if (array === "education")
+		{
+			setEducation(education.filter(element => element.key !== key));
+		}
+		else if (array === "skills")
+		{
+			setSkills(skills.filter(element => element.key !== key));
+		}
+		else if (array === "work")
+		{
+			setWork(work.filter(element => element.key !== key));
+		};
+	};
+
+	const changeWork = (key, name, input) =>
+	{
+		setWork
+		(
+			work.map(_work =>
+			{
+				if (_work.key === key) return {..._work, [name]: input}
+				else return _work;
+			})
+		);
+	};
+
+	const addWork = () =>
+	{
+		setWork
+		(
+			[
+				...work,
 				{
 					position: "",
 					yearFrom: "",
@@ -64,242 +218,46 @@ class App extends React.Component
 					key: uniqid(),
 				}
 			]
-		}
-
-		this.switchMenuOn = this.switchMenuOn.bind(this);
-		this.changeMenus = this.changeMenus.bind(this);
-
-		this.setPersonalInfo = this.setPersonalInfo.bind(this);
-		this.setEducation = this.setEducation.bind(this);
-		this.addEducation = this.addEducation.bind(this);
-		this.setJob = this.setJob.bind(this);
-		this.setSkills = this.setSkills.bind(this);
-		this.addSkill = this.addSkill.bind(this);
-		this.removeWithKey = this.removeWithKey.bind(this);
-		this.addWork = this.addWork.bind(this);
-		this.setWork = this.setWork.bind(this);
-	}
-
-	switchMenuOn = () => this.setState(prevState => ({switchMenu: {...prevState.switchMenu, on: true}}));
-
-	changeMenus = menu =>
-	{
-		this.setState
-		(
-			{
-				switchMenu:
-				{
-					...this.state.switchMenu,
-					menus:
-					{
-						cvCreator: false,
-						cv: false,
-						[menu]: true,
-					}
-				}
-			}
-		)
-	}
-
-	setPersonalInfo = (name, input, nested) =>
-	{
-		if (nested)
-		{
-			this.setState(prevState =>
-				(
-					{
-						personalInfo:
-						{
-							...prevState.personalInfo,
-							[nested]:
-							{
-								...prevState.personalInfo[nested],
-								[name]: input,
-							}
-						}
-					}
-				));
-		}
-		else if (name === "photo")
-		{
-			this.setState(prevState =>
-				(
-					{
-						personalInfo:
-						{
-							...prevState.personalInfo,
-							photo: URL.createObjectURL(input),
-						}
-					}
-				));
-		}
-		else this.setState(prevState =>
-			(
-				{
-					personalInfo:
-					{
-						...prevState.personalInfo,
-						[name]: input,
-					}
-				}
-			));
-
-		setTimeout(() => console.log(this.state.personalInfo), 0);
-	}
-
-	setEducation = (key, name, input) =>
-	{
-		this.setState(prevState =>
-		(
-			{
-				education:
-				prevState.education.map(edu =>
-				{
-					if (edu.key === key) return {...edu, [name]: input}
-					else return edu;
-				})
-			}
-		));
-		setTimeout(() => console.log(this.state.education), 0);
-	}
-
-	addEducation = () =>
-	{
-		this.setState(prevState =>
-		(
-			{
-				education:
-				[
-					...prevState.education,
-					{
-						degree: "",
-						titleOfStudy: "",
-						year: "",
-						school: "",
-						key: uniqid(),
-					}
-				]
-			}
-		))
-	}
-
-	setJob = input => this.setState({job: input});
-
-	setSkills = (key, input) =>
-	{
-		this.setState(prevState =>
-		(
-			{		
-				skills: prevState.skills.map(skill =>
-				{
-					if (skill.key === key) return skill = {...skill, "name": input}
-					else return skill;
-				})
-				
-			}
-		));
-	}
-
-	addSkill = () =>
-	{
-		this.setState(prevState =>
-		(
-			{
-				skills:
-				[
-					...prevState.skills,
-					{"name": "", "key": uniqid()}
-				]
-			}
-		))
-		setTimeout(() => console.log(this.state.skills), 0);
-	}
-
-	removeWithKey = (array, key) =>
-	{
-		this.setState(prevState =>
-		(
-			{
-				[array]: prevState[array].filter(element => element.key !== key)
-			}
-		));
-	}
-
-	setWork = (key, name, input) =>
-	{
-		this.setState(prevState =>
-		(
-			{
-				work:
-				prevState.work.map(_work =>
-				{
-					if (_work.key === key) return {..._work, [name]: input}
-					else return _work;
-				})
-			}
-		));
-	}
-
-	addWork = () =>
-	{
-		this.setState(prevState =>
-			(
-				{
-					work:
-					[
-						...prevState.work,
-						{
-							position: "",
-							yearFrom: "",
-							yearTo: "",
-							company: "",
-							key: uniqid(),
-						}
-					]
-				}
-			))
-	}
-
-	personalFns =
-	{
-		setPersonalInfo: this.setPersonalInfo,
-	}
-
-	educationFns =
-	{
-		setEducation: this.setEducation,
-		addEducation: this.addEducation,
-		removeEducation: this.removeWithKey,
-	}
-
-	skillsFns =
-	{
-		setJob: this.setJob,
-		setSkills: this.setSkills,
-		addSkill: this.addSkill,
-		removeSkill: this.removeWithKey,
-	}
-
-	workFns =
-	{
-		setWork: this.setWork,
-		addWork: this.addWork,
-		removeWork: this.removeWithKey,
-	}
-
-	render()
-	{
-		return(
-			<div className="App">
-				{window.innerWidth <= 1225 ? <SwitchMenu on={this.switchMenuOn} changeMenus={this.changeMenus} menus={this.state.switchMenu.menus}/> : null}
-				<CVCreator 
-				personalFns={this.personalFns} educationFns={this.educationFns} skillsFns={this.skillsFns} workFns={this.workFns}
-				info={this.state}
-				/>
-				<CV info={this.state}/>
-			</div>
 		);
+	};
+
+	const personalFns =
+	{
+		setPersonalInfo,
 	}
+
+	const educationFns =
+	{
+		setEducation: changeEducation,
+		addEducation,
+		removeEducation: removeWithKey,
+	}
+
+	const skillsFns =
+	{
+		setJob: changeJob,
+		setSkills: changeSkills,
+		addSkill,
+		removeSkill: removeWithKey,
+	}
+
+	const workFns =
+	{
+		setWork: changeWork,
+		addWork,
+		removeWork: removeWithKey,
+	}
+
+	return(
+		<div className="App">
+			{window.innerWidth <= 1225 ? <SwitchMenu on={switchMenuOn} changeMenus={changeMenus} menus={switchMenu.menus}/> : null}
+			<CVCreator 
+			personalFns={personalFns} educationFns={educationFns} skillsFns={skillsFns} workFns={workFns}
+			info={state}
+			/>
+			<CV info={state}/>
+		</div>
+	);
 }
 
 export default App;
