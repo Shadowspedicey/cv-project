@@ -117,7 +117,7 @@ const App = () =>
 			}
 		);
 
-		setTimeout(() => console.log(this.state.personalInfo), 0);
+		setTimeout(() => console.log(state.personalInfo), 0);
 	};
 
 	const changeEducation = (key, name, input) =>
@@ -130,7 +130,7 @@ const App = () =>
 				else return edu;
 			})
 		);
-		setTimeout(() => console.log(this.state.education), 0);
+		setTimeout(() => console.log(state.education), 0);
 	};
 
 	const addEducation = () =>
@@ -173,7 +173,7 @@ const App = () =>
 				{"name": "", "key": uniqid()}
 			]
 		);
-		setTimeout(() => console.log(this.state.skills), 0);
+		setTimeout(() => console.log(state.skills), 0);
 	};
 
 	const removeWithKey = (array, key) =>
