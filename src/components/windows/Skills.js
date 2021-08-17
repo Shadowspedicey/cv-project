@@ -1,40 +1,30 @@
 import React from "react";
 import AddButton from "../AddButton";
 
-class Skills extends React.Component
+const Skills = props =>
 {
-	constructor()
-	{
-		super()
+	const handleChange = (key, e) => props.skillsFns.setSkills(key, e.target.value);
 
-		this.handleChange = this.handleChange.bind(this);
-	}
-
-	handleChange = (key, e) => this.props.skillsFns.setSkills(key, e.target.value);
-
-	render()
-	{
-		return(
-			<div>
-				<div className="form-input-box">
-					<label htmlFor="job">Position/Job</label>
-					<input type="text" id="job" value={this.props.job} placeholder="Web Developer" onChange={(e) => this.props.skillsFns.setJob(e.target.value)}></input>
-				</div>
-				<h1>Skills</h1>
-				<div className="skills">
-					{this.props.skills.map
-					(
-						skill =>
-							<div key={skill.key} style={{display: "flex", alignItems: "center"}}>
-								<input value={skill.name} onChange={(e) => this.handleChange(skill.key ,e)}></input>
-								<span className="material-icons" onClick={() => this.props.skillsFns.removeSkill("skills", skill.key)}>delete</span>
-							</div>
-					)}
-					<AddButton property={this.props.skills} length={7} action={this.props.skillsFns.addSkill}/>
-				</div>
+	return(
+		<div>
+			<div className="form-input-box">
+				<label htmlFor="job">Position/Job</label>
+				<input type="text" id="job" value={props.job} placeholder="Web Developer" onChange={(e) => props.skillsFns.setJob(e.target.value)}></input>
 			</div>
-		)
-	}
+			<h1>Skills</h1>
+			<div className="skills">
+				{props.skills.map
+				(
+					skill =>
+						<div key={skill.key} style={{display: "flex", alignItems: "center"}}>
+							<input value={skill.name} onChange={(e) => handleChange(skill.key ,e)}></input>
+							<span className="material-icons" onClick={() => props.skillsFns.removeSkill("skills", skill.key)}>delete</span>
+						</div>
+				)}
+				<AddButton property={props.skills} length={7} action={props.skillsFns.addSkill}/>
+			</div>
+		</div>
+	)
 }
 
 export default Skills;
