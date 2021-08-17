@@ -2,16 +2,9 @@ import React from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
-class Export extends React.Component
+const Export = props =>
 {
-	constructor()
-	{
-		super()
-
-		this.toPDF = this.toPDF.bind(this);
-	}
-
-	toPDF = () =>
+	const toPDF = () =>
 	{
 		window.scrollTo(0,0)
 		document.querySelector(".CV").classList.add("print-ready");
@@ -28,17 +21,14 @@ class Export extends React.Component
 				doc.save('CV.pdf');
 			}
 		);
-	}
+	};
 
-	render()
-	{
-		return(
-			<div className="export-window">
-				<h1>Download your CV as PDF!</h1>
-				<button onClick={this.toPDF}>Download</button>
-			</div>
-		)
-	}
+	return(
+		<div className="export-window">
+			<h1>Download your CV as PDF!</h1>
+			<button onClick={toPDF}>Download</button>
+		</div>
+	)
 }
 
 export default Export;
