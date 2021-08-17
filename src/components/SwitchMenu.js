@@ -1,19 +1,15 @@
-import React from "react";
+import React, {useEffect} from "react";
 
-class SwitchMenu extends React.Component
+const SwitchMenu = props =>
 {
+	useEffect(() => props.on(), []);
 
-	componentDidMount = () => this.props.on();
-
-	render()
-	{
-		return(
-			<div className="switch-menu">
-				<div className={`button left ${this.props.menus.cvCreator ? null : "unselected"} no-border`} onClick={() => this.props.changeMenus("cvCreator")}>CV Creator</div>
-				<div className={`button ${this.props.menus.cv ? null : "unselected"} no-border`} onClick={() => this.props.changeMenus("cv")}>CV</div>
-			</div>
-		)
-	}
+	return(
+		<div className="switch-menu">
+			<div className={`button left ${props.menus.cvCreator ? null : "unselected"} no-border`} onClick={() => props.changeMenus("cvCreator")}>CV Creator</div>
+			<div className={`button ${props.menus.cv ? null : "unselected"} no-border`} onClick={() => props.changeMenus("cv")}>CV</div>
+		</div>
+	);
 }
 
 export default SwitchMenu;
