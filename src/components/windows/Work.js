@@ -39,8 +39,7 @@ const Work = props =>
 			}
 			<AddButton property={props.works} length={3} action={props.workFns.addWork}/>
 		</div>
-	)
-	
+	)	
 }
 
 export default Work;
