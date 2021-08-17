@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 
 const SwitchMenu = props =>
 {
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	useEffect(() => props.on(), []);
 
 	return(
